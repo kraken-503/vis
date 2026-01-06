@@ -1,14 +1,11 @@
 import requests
 import time
 
-
 def clean_url(url: str) -> str:  # removing the "/" at the end from user input.
     return url[:-1] if url.endswith("/") else url
 
-
 def target_list(base_url: str, directory: list[str]) -> list[str]:
     return [f"{base_url}/{dir_name}/" for dir_name in directory]
-
 
 def scan(targets: list[str]) -> None:
     for target in targets:
@@ -20,7 +17,6 @@ def scan(targets: list[str]) -> None:
                 print(f"[x] {target} Not Found")
         except requests.exceptions.RequestException as e:
             print(f"[!] Error Accessing {target}: {e}")
-
 
 def main():
     with open("art.txt", "r") as art:
